@@ -1,0 +1,15 @@
+service: my-express-application
+
+provider:
+  name: aws
+  region: eu-central-1
+  runtime: nodejs12.x
+  stage: dev
+  profile: personal
+
+functions:
+  app:
+    handler: src/serverless.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
